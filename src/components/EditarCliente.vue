@@ -82,7 +82,7 @@
           <br />
 
           <div class="btn-group" role="group">
-            <button type="submit" class="btn btn-success" v-on:click="editar()"><router-link to="/dashboard">Editar</router-link></button>
+            <button type="submit" class="btn btn-success" v-on:click="editar()">Editar</button>
             <router-link to="/dashboard" class="btn btn-danger"
               >Cancelar</router-link
             >
@@ -114,7 +114,8 @@ export default {
       axios.put("https://localhost:7241/Cliente/" + this.cliente, this.form)
       .then(data =>{
         console.log(data);
-      })
+      });
+      this.$router.push("/dashboard");
     }
   },
   mounted:function(){
