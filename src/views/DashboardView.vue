@@ -1,5 +1,6 @@
 <script setup>
-  import ListarUsuario from '../components/ListarUsuario.vue';
+  import ListarUsuario from '../components/Cliente/ListarUsuario.vue';
+  import ListarDepartamento from '../components/Departamento/ListarDepartamento.vue';
   </script>
 <template>
       <div class="admin-panel clearfix">
@@ -8,8 +9,8 @@
       <a href=""></a>
     </div>
     <ul>
-      <li><a href="#dashboard" id="targeted">Usuario</a></li>
-      <li><a href="#posts">Empleados</a></li>
+      <li><a href="#dashboard" id="targeted">Clientes</a></li>
+      <li><a href="#empleados">Departamentos</a></li>
       <li><a href="#media">media</a></li>
       <li><a href="#pages">pages</a></li>
       <li><a href="#links">links</a></li>
@@ -31,15 +32,16 @@
     </ul>
     <div class="mainContent clearfix">
       <div id="dashboard">
-        <h2 class="header">clientes</h2>
+        <h2 class="header">Clientes</h2>
           <div class="monitor">
             <main>
 			<ListarUsuario/>
 			</main>
          </div>
        </div>
-       <div id="posts">
-         <h2 class="header">posts</h2>
+       <div id="empleados">
+         <h2 class="header">Departamentos</h2>
+		 <ListarDepartamento/>
        </div>
        <div id="media">
          <h2 class="header">media</h2>

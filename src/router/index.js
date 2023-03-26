@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ListarUsuario from "../components/ListarUsuario.vue"
-import CrearUsuario from "../components/CrearUsuario.vue"
-import EditarCliente from "../components/EditarCliente.vue"
+import ListarUsuario from "../components/Cliente/ListarUsuario.vue"
+import CrearUsuario from "../components/Cliente/CrearUsuario.vue"
+import EditarCliente from "../components/Cliente/EditarCliente.vue"
+import ListarDepartamento from "../components/Departamento/ListarDepartamento.vue"
+import CrearDepartamento from "../components/Departamento/CrearDepartamento.vue"
+import EditarDepartamento from "../components/Departamento/EditarDepartamento.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,7 +45,22 @@ const router = createRouter({
       path: '/editar/:pkCliente',
       name: 'editar',
       component: EditarCliente
-  }
+    },
+    {
+      path: '/listardepartamento',
+      name: 'listardepartamento',
+      component: ListarDepartamento
+    },
+    {
+      path: '/creardepartamento',
+      name: 'creardepartamento',
+      component: CrearDepartamento
+    },
+    {
+      path: '/editardepartamento/:pkDepartamento',
+      name: 'editardepartamento',
+      component: EditarDepartamento
+    },
   ]
 })
 
