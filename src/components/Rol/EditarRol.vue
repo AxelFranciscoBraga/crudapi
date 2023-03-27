@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card">
-      <div class="card-header">Editar departamento</div>
+      <div class="card-header">Editar Rol</div>
       <div class="card-body">
         <form>
           <div class="form-group">
@@ -16,7 +16,7 @@
               placeholder="Nombre"
             />
             <small id="helpId" class="form-text" text-muted
-              >Ingresa el nombre del usuario</small
+              >Ingresa el nombre del Rol</small
             >
           </div>
           <br />
@@ -39,7 +39,7 @@ import {RouterView} from 'vue-router';
 export default {
   data() {
     return {
-      departamento: null,
+      rol: null,
       form:{
         "nombre":""
       }
@@ -47,7 +47,7 @@ export default {
   },
   methods:{
     editar(){
-      axios.put("https://localhost:7241/Departamento/" + this.departamento, this.form)
+      axios.put("https://localhost:7241/Rol/" + this.rol, this.form)
       .then(data =>{
         console.log(data);
       });
@@ -55,9 +55,9 @@ export default {
     }
   },
   mounted:function(){
-    this.departamento = this.$route.params.pkDepartamento;
-    console.log(this.departamento);
-    axios.get("https://localhost:7241/Departamento/" + this.departamento)
+    this.rol = this.$route.params.pkRol;
+    console.log(this.rol);
+    axios.get("https://localhost:7241/Rol/" + this.rol)
     .then(datos =>{
       console.log(datos);
       this.form.nombre = datos.data.value.result.nombre;

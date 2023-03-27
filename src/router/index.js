@@ -6,7 +6,21 @@ import EditarCliente from "../components/Cliente/EditarCliente.vue"
 import ListarDepartamento from "../components/Departamento/ListarDepartamento.vue"
 import CrearDepartamento from "../components/Departamento/CrearDepartamento.vue"
 import EditarDepartamento from "../components/Departamento/EditarDepartamento.vue"
-
+import ListarEmpleado from "../components/Empleado/ListarEmpleado.vue"
+import CrearEmpleado from "../components/Empleado/CrearEmpleado.vue"
+import EditarEmpleado from "../components/Empleado/EditarEmpleado.vue"
+import ListarFactura from "../components/Factura/ListarFactura.vue"
+import CrearFactura from "../components/Factura/CrearFactura.vue"
+import EditarFactura from "../components/Factura/EditarFactura.vue"
+import ListarPuesto from "../components/Puesto/ListarPuesto.vue"
+import CrearPuesto from "../components/Puesto/CrearPuesto.vue"
+import EditarPuesto from "../components/Puesto/EditarPuesto.vue"
+import ListarRol from "../components/Rol/ListarRol.vue"
+import CrearRol from "../components/Rol/CrearRol.vue"
+import EditarRol from "../components/Rol/EditarRol.vue"
+import ListarUsuarioR from "../components/Usuario/ListarUsuarioR.vue"
+import CrearUsuarioR from "../components/Usuario/CrearUsuarioR.vue"
+import EditarUsuarioR from "../components/Usuario/EditarUsuarioR.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -32,17 +46,17 @@ const router = createRouter({
       component: () => import('../views/DashboardView.vue')
     },
     {
-      path: '/listar',
+      path: '/listarc',
       name: 'listar',
       component: ListarUsuario
     },
     {
-        path: '/crear',
+        path: '/crearc',
         name: 'crear',
         component: CrearUsuario
     },
     {
-      path: '/editar/:pkCliente',
+      path: '/editarc/:pkCliente',
       name: 'editar',
       component: EditarCliente
     },
@@ -60,6 +74,81 @@ const router = createRouter({
       path: '/editardepartamento/:pkDepartamento',
       name: 'editardepartamento',
       component: EditarDepartamento
+    },
+    {
+      path: '/listarempleado',
+      name: 'listarempleado',
+      component: ListarEmpleado
+    },
+    {
+      path: '/crearempleado',
+      name: 'crearempleado',
+      component: CrearEmpleado
+    },
+    {
+      path: '/editarempleado/:pkEmpleado',
+      name: 'editarempleado',
+      component: EditarEmpleado
+    },
+    {
+      path: '/listarfactura',
+      name: 'listarfactura',
+      component: ListarFactura
+    },
+    {
+      path: '/crearfactura',
+      name: 'crearfactura',
+      component: CrearFactura
+    },
+    {
+      path: '/editarfactura/:pkFactura',
+      name: 'editarfactura',
+      component: EditarFactura
+    },
+    {
+      path: '/listarpuesto',
+      name: 'listarpuesto',
+      component: ListarPuesto
+    },
+    {
+      path: '/crearpuesto',
+      name: 'crearpuesto',
+      component: CrearPuesto
+    },
+    {
+      path: '/editarpuesto/:pkpuesto',
+      name: 'editarpuesto',
+      component: EditarPuesto
+    },
+    {
+      path: '/listarrol',
+      name: 'listarrol',
+      component: ListarRol
+    },
+    {
+      path: '/crearrol',
+      name: 'crearrol',
+      component: CrearRol
+    },
+    {
+      path: '/editarrol/:pkRol',
+      name: 'editarrol',
+      component: EditarRol
+    },
+    {
+      path: '/listarusuarior',
+      name: 'listarusuarior',
+      component: ListarUsuarioR
+    },
+    {
+      path: '/crearusuarior',
+      name: 'crearusuarior',
+      component: CrearUsuarioR
+    },
+    {
+      path: '/editarusuarior/:pkUsuario',
+      name: 'editarusuarior',
+      component: EditarUsuarioR
     },
   ]
 })

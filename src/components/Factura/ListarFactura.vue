@@ -1,26 +1,33 @@
 <template>
-  <router-link to="/creardepartamento" class="btn btn-warning">Crear departamento</router-link>
+  <router-link to="/crearfactura" class="btn btn-warning">Crear factura</router-link>
     <div>
       <div class="card">
-        <div class="card-header">Departamentos</div>
+        <div class="card-header">Facturas</div>
         <div class="card_body">
           <table class="table">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Razon social</th>
+                <th>fecha</th>
+                <th>RFC</th>
+                <th>Cliente</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="departamento in departamento" :key="departamento.pkDepartamento" v-on:click="editar(departamento.pkDepartamento)">
-                <td>{{ departamento.pkDepartamento }}</td>
-                <td>{{ departamento.nombre }}</td>
+              <tr v-for="factura in factura" :key="factura.pkFactura" v-on:click="editar(factura.pkFactura)">
+                <td>{{ factura.pkFactura }}</td>
+                <td>{{ factura.razonSocial }}</td>
+                <td>{{ factura.fecha }}</td>
+                <td>{{ factura.rfc }}</td>
+                <td>{{ factura.fkCliente }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <router-link to="/editar" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
-                      v-on:click="borrarDepartamento(departamento.pkDepartamento)"
+                      v-on:click="borrarFactura(factura.pkFactura)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -40,29 +47,29 @@
   export default {
     data() {
       return {
-        departamento: [],
+        factura: [],
       };
     },
     created: function () {
-      this.consultarDepartamentos();
+      this.consultarFactura();
     },
     methods: {
-      consultarDepartamentos() {
-        axios.get("https://localhost:7241/Departamento").then((result) => {
+      consultarFactura() {
+        axios.get("https://localhost:7241/Factura").then((result) => {
           console.log(result.data.result);
-          this.departamento = result.data.result;
+          this.factura = result.data.result;
         });
       },
   
-      borrarDepartamento(pkDepartamento) {
-        console.log(pkDepartamento);
+      borrarFactura(pkFactura) {
+        console.log(pkFactura);
   
-        axios.delete("https://localhost:7241/Departamento/" + pkDepartamento);
+        axios.delete("https://localhost:7241/Factura/" + pkFactura);
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
-      editar(pkDepartamento){
-          this.$router.push("/editardepartamento/" + pkDepartamento);
+      editar(pkFactura){
+          this.$router.push("/editarfactura/" + pkFactura);
         }
     },
   };

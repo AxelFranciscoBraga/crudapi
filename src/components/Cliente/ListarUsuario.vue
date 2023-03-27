@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/crear" class="btn btn-warning">Crear Usuario</router-link>
+  <router-link to="/crearc" class="btn btn-warning">Crear Usuario</router-link>
     <div>
       <div class="card">
         <div class="card-header">Clientes</div>
@@ -71,7 +71,7 @@
         window.location.href = "dashboard";
       },
       editar(pkCliente){
-          this.$router.push("/editar/" + pkCliente);
+          this.$router.push("/editarc/" + pkCliente);
         }
     },
   };

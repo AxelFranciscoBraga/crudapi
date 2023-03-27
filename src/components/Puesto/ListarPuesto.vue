@@ -1,8 +1,8 @@
 <template>
-  <router-link to="/creardepartamento" class="btn btn-warning">Crear departamento</router-link>
+  <router-link to="/crearpuesto" class="btn btn-warning">Crear Puesto</router-link>
     <div>
       <div class="card">
-        <div class="card-header">Departamentos</div>
+        <div class="card-header">Puestos</div>
         <div class="card_body">
           <table class="table">
             <thead>
@@ -12,15 +12,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="departamento in departamento" :key="departamento.pkDepartamento" v-on:click="editar(departamento.pkDepartamento)">
-                <td>{{ departamento.pkDepartamento }}</td>
-                <td>{{ departamento.nombre }}</td>
+              <tr v-for="puesto in puesto" :key="puesto.pkpuesto" v-on:click="editar(puesto.pkpuesto)">
+                <td>{{ puesto.pkpuesto }}</td>
+                <td>{{ puesto.nombre }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
-                    <router-link to="/editar" class="btn btn-info">Editar</router-link>
+                    <router-link to="/editarpuesto" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
-                      v-on:click="borrarDepartamento(departamento.pkDepartamento)"
+                      v-on:click="borrarPuesto(puesto.pkpuesto)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -40,29 +40,29 @@
   export default {
     data() {
       return {
-        departamento: [],
+        puesto: [],
       };
     },
     created: function () {
-      this.consultarDepartamentos();
+      this.consultarPuesto();
     },
     methods: {
-      consultarDepartamentos() {
-        axios.get("https://localhost:7241/Departamento").then((result) => {
+      consultarPuesto() {
+        axios.get("https://localhost:7241/Puesto").then((result) => {
           console.log(result.data.result);
-          this.departamento = result.data.result;
+          this.puesto = result.data.result;
         });
       },
   
-      borrarDepartamento(pkDepartamento) {
-        console.log(pkDepartamento);
+      borrarPuesto(pkpuesto) {
+        console.log(pkpuesto);
   
-        axios.delete("https://localhost:7241/Departamento/" + pkDepartamento);
+        axios.delete("https://localhost:7241/Puesto/" + pkpuesto);
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
-      editar(pkDepartamento){
-          this.$router.push("/editardepartamento/" + pkDepartamento);
+      editar(pkpuesto){
+          this.$router.push("/editarpuesto/" + pkpuesto);
         }
     },
   };

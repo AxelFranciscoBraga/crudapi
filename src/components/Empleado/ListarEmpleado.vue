@@ -1,26 +1,37 @@
 <template>
-  <router-link to="/creardepartamento" class="btn btn-warning">Crear departamento</router-link>
+  <router-link to="/crearempleado" class="btn btn-warning">Crear empleado</router-link>
     <div>
       <div class="card">
-        <div class="card-header">Departamentos</div>
+        <div class="card-header">Empleados</div>
         <div class="card_body">
           <table class="table">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Apelldios</th>
+                <th>Direccion</th>
+                <th>Ciudad</th>
+                <th>Puesto</th>
+                <th>Departamento</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="departamento in departamento" :key="departamento.pkDepartamento" v-on:click="editar(departamento.pkDepartamento)">
-                <td>{{ departamento.pkDepartamento }}</td>
-                <td>{{ departamento.nombre }}</td>
+              <tr v-for="empleado in empleado" :key="empleado.pkEmpleado" v-on:click="editar(empleado.pkEmpleado)">
+                <td>{{ empleado.pkEmpleado }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellidos }}</td>
+                <td>{{ empleado.direccion }}</td>
+                <td>{{ empleado.ciudad }}</td>
+                <td>{{ empleado.fkPuesto }}</td>
+                <td>{{ empleado.fkDepartamento }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
-                    <router-link to="/editar" class="btn btn-info">Editar</router-link>
+                    <router-link to="/editarempleado" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
-                      v-on:click="borrarDepartamento(departamento.pkDepartamento)"
+                      v-on:click="borrarEmpleado(empleado.pkEmpleado)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -40,29 +51,29 @@
   export default {
     data() {
       return {
-        departamento: [],
+        empleado: [],
       };
     },
     created: function () {
-      this.consultarDepartamentos();
+      this.consultarEmpleados();
     },
     methods: {
-      consultarDepartamentos() {
-        axios.get("https://localhost:7241/Departamento").then((result) => {
+      consultarEmpleados() {
+        axios.get("https://localhost:7241/Empleado").then((result) => {
           console.log(result.data.result);
-          this.departamento = result.data.result;
+          this.empleado = result.data.result;
         });
       },
   
-      borrarDepartamento(pkDepartamento) {
-        console.log(pkDepartamento);
+      borrarEmpleado(pkEmpleado) {
+        console.log(pkEmpleado);
   
-        axios.delete("https://localhost:7241/Departamento/" + pkDepartamento);
+        axios.delete("https://localhost:7241/Empleado/" + pkEmpleado);
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
-      editar(pkDepartamento){
-          this.$router.push("/editardepartamento/" + pkDepartamento);
+      editar(pkEmpleado){
+          this.$router.push("/editarempleado/" + pkEmpleado);
         }
     },
   };

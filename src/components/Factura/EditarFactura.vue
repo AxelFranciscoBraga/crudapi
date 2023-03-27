@@ -1,19 +1,64 @@
 <template>
   <div class="container">
     <div class="card">
-      <div class="card-header">Editar departamento</div>
+      <div class="card-header">Editar factura</div>
       <div class="card-body">
         <form>
           <div class="form-group">
-            <label for="">Nombre:</label>
+            <label for="">Razon social:</label>
             <input
               type="text"
               class="form-control"
-              name="nombre"
-              v-model="form.nombre"
+              name="razonSocial"
+              v-model="form.razonSocial"
               aria-describedby="helpId"
-              id="nombre"
-              placeholder="Nombre"
+              id="razonSocial"
+              placeholder="Razon social"
+            />
+            <small id="helpId" class="form-text" text-muted
+              >Ingresa el nombre del usuario</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="">fecha:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="fecha"
+              v-model="form.fecha"
+              aria-describedby="helpId"
+              id="fecha"
+              placeholder="Fecha"
+            />
+            <small id="helpId" class="form-text" text-muted
+              >Ingresa el nombre del usuario</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="">RFC:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="rfc"
+              v-model="form.rfc"
+              aria-describedby="helpId"
+              id="rfc"
+              placeholder="RFC"
+            />
+            <small id="helpId" class="form-text" text-muted
+              >Ingresa el nombre del usuario</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="">Cliente:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="fkCliente"
+              v-model="form.fkCliente"
+              aria-describedby="helpId"
+              id="fkCliente"
+              placeholder="Cliente"
             />
             <small id="helpId" class="form-text" text-muted
               >Ingresa el nombre del usuario</small
@@ -39,15 +84,18 @@ import {RouterView} from 'vue-router';
 export default {
   data() {
     return {
-      departamento: null,
+      factura: null,
       form:{
-        "nombre":""
+        "razonSocial":"",
+        "fecha":"",
+        "rfc":"",
+        "fkCliente":""
       }
     };
   },
   methods:{
     editar(){
-      axios.put("https://localhost:7241/Departamento/" + this.departamento, this.form)
+      axios.put("https://localhost:7241/Factura/" + this.factura, this.form)
       .then(data =>{
         console.log(data);
       });
@@ -55,12 +103,15 @@ export default {
     }
   },
   mounted:function(){
-    this.departamento = this.$route.params.pkDepartamento;
-    console.log(this.departamento);
-    axios.get("https://localhost:7241/Departamento/" + this.departamento)
+    this.factura = this.$route.params.pkFactura;
+    console.log(this.factura);
+    axios.get("https://localhost:7241/Factura/" + this.factura)
     .then(datos =>{
       console.log(datos);
-      this.form.nombre = datos.data.value.result.nombre;
+      this.form.razonSocial = datos.data.value.result.razonSocial;
+      this.form.fecha = datos.data.value.result.fecha;
+      this.form.rfc = datos.data.value.result.rfc;
+      this.form.fkCliente = datos.data.value.result.fkCliente;
       console.log(this.form);
     })
   }

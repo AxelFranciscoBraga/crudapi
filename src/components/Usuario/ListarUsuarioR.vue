@@ -1,26 +1,35 @@
 <template>
-  <router-link to="/creardepartamento" class="btn btn-warning">Crear departamento</router-link>
+  <router-link to="/crearusuarior" class="btn btn-warning">Crear usuario</router-link>
     <div>
       <div class="card">
-        <div class="card-header">Departamentos</div>
+        <div class="card-header">Usuarios</div>
         <div class="card_body">
           <table class="table">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>User</th>
+                <th>Password</th>
+                <th>Fecha de registro</th>
+                <th>Empleado</th>
+                <th>Rol</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="departamento in departamento" :key="departamento.pkDepartamento" v-on:click="editar(departamento.pkDepartamento)">
-                <td>{{ departamento.pkDepartamento }}</td>
-                <td>{{ departamento.nombre }}</td>
+              <tr v-for="usuario in usuario" :key="usuario.pkUsuario" v-on:click="editar(usuario.pkUsuario)">
+                <td>{{ usuario.pkUsuario }}</td>
+                <td>{{ usuario.user }}</td>
+                <td>{{ usuario.password }}</td>
+                <td>{{ usuario.fechaRegistro }}</td>
+                <td>{{ usuario.fkEmpleado }}</td>
+                <td>{{ usuario.fkRol }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
-                    <router-link to="/editar" class="btn btn-info">Editar</router-link>
+                    <router-link to="/editarusuarior" class="btn btn-info">Editar</router-link>
                     <button
                       type="button"
-                      v-on:click="borrarDepartamento(departamento.pkDepartamento)"
+                      v-on:click="borrarUsuario(usuario.pkUsuario)"
                       class="btn btn-danger"
                     >
                       Eliminar</button
@@ -40,29 +49,29 @@
   export default {
     data() {
       return {
-        departamento: [],
+        usuario: [],
       };
     },
     created: function () {
-      this.consultarDepartamentos();
+      this.consultarUsuarios();
     },
     methods: {
-      consultarDepartamentos() {
-        axios.get("https://localhost:7241/Departamento").then((result) => {
+      consultarUsuarios() {
+        axios.get("https://localhost:7241/Usuarios").then((result) => {
           console.log(result.data.result);
-          this.departamento = result.data.result;
+          this.usuario = result.data.result;
         });
       },
   
-      borrarDepartamento(pkDepartamento) {
-        console.log(pkDepartamento);
+      borrarUsuario(pkUsuario) {
+        console.log(pkUsuario);
   
-        axios.delete("https://localhost:7241/Departamento/" + pkDepartamento);
+        axios.delete("https://localhost:7241/Usuarios/" + pkUsuario);
         // console.log(result.data.result);
         window.location.href = "dashboard";
       },
-      editar(pkDepartamento){
-          this.$router.push("/editardepartamento/" + pkDepartamento);
+      editar(pkUsuario){
+          this.$router.push("/editarusuarior/" + pkUsuario);
         }
     },
   };

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="card">
-        <div class="card-header">Agregar departamento</div>
+        <div class="card-header">Agregar Rol</div>
         <div class="card-body">
           <form v-on:submit.prevent="agregarRegistro">
             <div class="form-group">
@@ -10,13 +10,13 @@
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="departamento.nombre"
+                v-model="rol.nombre"
                 aria-describedby="helpId"
                 id="nombre"
                 placeholder="Nombre"
               />
               <small id="helpId" class="form-text" text-muted
-                >Ingresa el nombre del departamento</small
+                >Ingresa el nombre del Rol</small
               >
             </div>
             <br />
@@ -39,20 +39,20 @@
   export default {
     data() {
       return {
-        departamento: {},
+        rol: {},
       };
     },
   
     methods: {
       agregarRegistro() {
-        console.log(this.departamento);
+        console.log(this.rol);
   
         var datosEnviar = {
-          nombre: this.departamento.nombre,
+          nombre: this.rol.nombre,
         };
   
         axios
-          .post("https://localhost:7241/Departamento", datosEnviar)
+          .post("https://localhost:7241/Rol", datosEnviar)
           .then((result) => {
             console.log(result.data.result);
             window.location.href = "dashboard";
