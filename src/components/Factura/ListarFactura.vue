@@ -21,7 +21,7 @@
                 <td>{{ factura.razonSocial }}</td>
                 <td>{{ factura.fecha }}</td>
                 <td>{{ factura.rfc }}</td>
-                <td>{{ factura.fkCliente }}</td>
+                <td>{{ factura.cliente.nombre }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <router-link to="/editar" class="btn btn-info">Editar</router-link>

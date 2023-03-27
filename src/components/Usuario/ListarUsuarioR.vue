@@ -22,8 +22,8 @@
                 <td>{{ usuario.user }}</td>
                 <td>{{ usuario.password }}</td>
                 <td>{{ usuario.fechaRegistro }}</td>
-                <td>{{ usuario.fkEmpleado }}</td>
-                <td>{{ usuario.fkRol }}</td>
+                <td>{{ usuario.empleado.nombre }}</td>
+                <td>{{ usuario.rol.nombre }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <router-link to="/editarusuarior" class="btn btn-info">Editar</router-link>

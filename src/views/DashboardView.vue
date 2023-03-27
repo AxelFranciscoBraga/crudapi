@@ -49,7 +49,7 @@
        <div id="empleados">
          <h2 class="header">Empleados</h2>
 		<main>
-			<!-- <ListarEmpleado/> -->
+			<ListarEmpleado/>
 		</main>
 		</div>
        <div id="facturas">
@@ -73,7 +73,7 @@
        <div id="usuarios">
          <h2 class="header">Usuarios</h2>
 		 <main>
-			<ListarUsuarioR/>
+			<!-- <ListarUsuarioR/> -->
 		 </main>
        </div>
      </div>

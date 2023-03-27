@@ -24,8 +24,8 @@
                 <td>{{ empleado.apellidos }}</td>
                 <td>{{ empleado.direccion }}</td>
                 <td>{{ empleado.ciudad }}</td>
-                <td>{{ empleado.fkPuesto }}</td>
-                <td>{{ empleado.fkDepartamento }}</td>
+                <td>{{ empleado.puesto.nombre }}</td>
+                <td>{{ empleado.departamento.nombre }}</td>
                 <td>
                   <div class="btn-group" role="label" aria-label="">
                     <router-link to="/editarempleado" class="btn btn-info">Editar</router-link>
